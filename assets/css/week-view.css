@@ -1,0 +1,77 @@
+body{
+    background-color: black;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white
+}
+
+/*content to the middle*/
+.content{
+    width: 50%;
+    height: 100%;
+}
+
+/*days with color teal and flex for horizontal display*/
+.days{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: teal;
+}
+
+/*Each day with colour white and alignment center*/
+.day{
+    width: 15%;
+    text-align: center;
+    border: 1px solid white;
+}
+
+/*title of the habit*/
+.title{
+    width: 100%;
+    padding: 1rem;
+    font-size: x-large;
+}
+
+/*status of each day*/
+.dates{
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+/*status with color and border*/
+.date{
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid white;
+}
+
+/*padding for habit title*/
+.habit{
+    padding-top: 1rem;
+    
+}
+
+.home-button{
+    color: white;
+    margin: 2rem;
+    text-align: center;
+}
+
+.home-button a{
+    text-decoration: none;
+    color: white;
+    font-size:  x-large;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid white;
+}

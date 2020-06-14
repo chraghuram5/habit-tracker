@@ -1,0 +1,92 @@
+body{
+    background-color: black;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/*content to the middle*/
+.content{
+    width: 50%;
+    height: 100%;
+    background-color: teal;
+}
+
+/*form style with height and width*/
+.form-content{
+    width: 100%;
+    height: 30%;
+    background-color: white;
+}
+
+/*title with padding and font-size*/
+.title{
+    font-size: xx-large;
+    font-weight: bolder;
+    padding: 1rem;
+}
+
+/*remove border and outline for input*/
+input{
+    border: 0px;
+    outline: none;
+}
+
+/*padding for input inside title*/
+.title input{
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+/*button style with no border and outline*/
+button{
+    color: white;
+    background-color: black;
+    border: none;
+    outline: none;
+    align-self: center;
+    padding: 1rem;
+    border-radius: 20px;
+    font-size: x-large;
+}
+
+/*submit button alignment*/
+.submit-button{
+    text-align: center;
+}
+
+/*habits list flex*/
+.habits{
+    display: flex;
+    flex-direction: column;
+}
+
+/*each habit */
+.habit{
+    padding: 1rem;
+    font-size: x-large;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.day-view-button a{
+    text-decoration: none;
+    color: white;
+    font-size:  x-large;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+
+.day-view-button{
+    text-align: center;
+    margin: 2rem;
+}

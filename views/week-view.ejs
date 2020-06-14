@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/week-view.css">
+</head>
+
+<body>
+    <!--display days on the top-->
+    <div class="content">
+        <div class="days">
+            <% let currentDate=new Date();
+    currentDate.setDate(currentDate.getDate());%>
+            <%
+    for(let i=6;i>=0;i--){
+        let newDate=new Date();
+        newDate.setDate(currentDate.getDate()-i);
+    %>
+    <!--each day-->
+            <div class="day">
+                <%=newDate.toString().substring(0,3)%><br>
+            </div>
+            <%}
+    %>
+        </div>
+        <%for(habit of habits){%>
+            <div class="habit">
+                <!--title of habit-->
+            <div class="title">
+                <%=habit.title%>
+            </div>
+            <div class="dates">
+        <%
+        for(let i=6;i>=0;i--){
+            let newDate=new Date();
+            newDate.setDate(currentDate.getDate()-i);
+            for(detail of habit.details){
+            if(detail.date.getDate()==newDate.getDate() && detail.date.getMonth()==newDate.getMonth()){
+                %>
+                <!--status of the habit each day-->
+                <div class="date">
+                    <%=detail.status%>
+                    <%=newDate.getDate()%>
+                   <!--<%=newDate.getDate()%>
+                    <%=detail.date.getDate()%><br>--> 
+            <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=none">None</a>
+            <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=notdone">Not Done</a>
+            <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=done">done</a>
+                </div>
+        <%
+            }
+            }      
+        }%></div>
+        
+    </div><%
+    }%>
+    <div class="home-button"><a href="home">Home</a></div>
+    </div>
+</body>
+
+</html>

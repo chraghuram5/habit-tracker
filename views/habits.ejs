@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/habits.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="content">
+        <!--form for adding a habit-->
+        <div class="form-content">
+            <form action="create-habit" method="post">
+                <div class="title">
+                    <label for="title" id="title-label">Title:</label><br>
+                    <input type="text" name="title" id="title" placeholder="What do you want to do?" required>
+                </div>
+                <div class="submit-button">
+                    <button type="submit">Add habit</button>
+                </div>
+            </form>
+        </div>
+
+        <!--list of habits-->
+        <div class="habits">
+            <%if(habits!=null){%>
+            <%for(habit of habits){%>
+                <!--each habit-->
+            <div class="habit">
+                <div><%=habit.title%></div>
+                <div><a href="delete?id=<%=habit._id%>"><i class="fas fa-times-circle"></i></a>
+                </div></div>
+            <%}%>
+                    <%}%>
+        </div>
+        <!-- link to go to another view-->
+        <div class="day-view-button"><a href="/day-view">Day-View</a></div>
+    </div>
+</body>
+
+</html>
