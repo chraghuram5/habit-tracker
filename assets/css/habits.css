@@ -77,6 +77,7 @@ button{
     justify-content: space-between;
 }
 
+/*day-view with increased font-size*/
 .day-view-button a{
     text-decoration: none;
     color: white;
@@ -89,4 +90,10 @@ button{
 .day-view-button{
     text-align: center;
     margin: 2rem;
+}
+
+.delete-button a{
+    padding-right: 5rem;
+    text-decoration: none;
+    color: white;
 }

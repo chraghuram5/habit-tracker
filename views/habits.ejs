@@ -24,13 +24,33 @@
         <!--list of habits-->
         <div class="habits">
             <%if(habits!=null){%>
-            <%for(habit of habits){%>
-                <!--each habit-->
+            <%for(habit of habits){
+                //logic for calculating no.of days since task is created
+                let createdDate=habit.createdAt;
+                createdDate.setDate(createdDate.getDate());
+                const oneDay = 24 * 60 * 60 * 1000;
+                const currentDate = new Date();
+                currentDate.setDate(currentDate.getDate());
+                const diffDays = Math.round(Math.abs((currentDate - createdDate) / oneDay));
+                let count=0;%>
+            <!--each habit-->
             <div class="habit">
+                <!-- Title of habit -->
                 <div><%=habit.title%></div>
-                <div><a href="delete?id=<%=habit._id%>"><i class="fas fa-times-circle"></i></a>
-                </div></div>
-            <%}%>
+                <!--Delete for habit-->
+                <div class="delete-button"><a href="delete?id=<%=habit._id%>"><i class="fas fa-times-circle"></i></a>
+                    <%
+        for(detail of habit.details){
+            //logic for getting no.of days till 
+            let date=new Date(detail.date);
+            if(date.getTime()>(createdDate.getTime()) && detail.status=="DONE"){
+                count++;
+            }
+        }
+    %>
+                    <!--Days completed-->
+                    Days Done: <%=count%>/<%=diffDays%></div>
+            </div><%}%>
                     <%}%>
         </div>
         <!-- link to go to another view-->

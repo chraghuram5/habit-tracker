@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/week-view.css">
 </head>
 
@@ -15,7 +17,7 @@
         let newDate=new Date();
         newDate.setDate(currentDate.getDate()-i);
     %>
-    <!--each day-->
+            <!--each day-->
             <div class="day">
                 <%=newDate.toString().substring(0,3)%><br>
             </div>
@@ -23,37 +25,63 @@
     %>
         </div>
         <%for(habit of habits){%>
-            <div class="habit">
-                <!--title of habit-->
+        <div class="habit">
+            <!--title of habit-->
             <div class="title">
                 <%=habit.title%>
             </div>
             <div class="dates">
-        <%
+                <%
         for(let i=6;i>=0;i--){
             let newDate=new Date();
+            let flag=true;
             newDate.setDate(currentDate.getDate()-i);
             for(detail of habit.details){
-            if(detail.date.getDate()==newDate.getDate() && detail.date.getMonth()==newDate.getMonth()){
+            if(detail.date==newDate.toDateString()){
+                flag=false;
                 %>
                 <!--status of the habit each day-->
                 <div class="date">
-                    <%=detail.status%>
-                    <%=newDate.getDate()%>
-                   <!--<%=newDate.getDate()%>
-                    <%=detail.date.getDate()%><br>--> 
-            <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=none">None</a>
-            <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=notdone">Not Done</a>
-            <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=done">done</a>
+                    <div class="status-date">
+                        <div><%=detail.status%></div>
+                        <div><%=newDate.getDate()%></div>
+                    </div>
+                    <div class="status-list">
+                        <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=NONE" title="Mark None"><i
+                                class="fas fa-times-circle"></i></a>
+                        <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=NOT-DONE"
+                            title="Mark Not done"><i class="fas fa-star-half"></i></a>
+                        <a href="edit-status?id=<%=habit._id%>&did=<%=detail._id%>&status=DONE" title="Mark Done"><i
+                                class="fas fa-check-circle"></i></a>
+                    </div>
                 </div>
-        <%
+                <%
             }
+            }
+            if(flag){
+                %>
+                <div class="date">
+                    <div class="status-date">
+                        <div>NO STATUS</div>
+                        <div><%=newDate.getDate()%></div>
+                    </div>
+                    <div class="status-list">
+                        <a href="add-task?id=<%=habit._id%>&date=<%=newDate.toDateString()%>&status=NONE"
+                            title="Mark None"><i class="fas fa-times-circle"></i></a>
+                        <a href="add-task?id=<%=habit._id%>&date=<%=newDate.toDateString()%>&status=NOT-DONE"
+                            title="Mark Not Done"><i class="fas fa-star-half"></i></a>
+                        <a href="add-task?id=<%=habit._id%>&date=<%=newDate.toDateString()%>&status=DONE"
+                            title="Mark Done"><i class="fas fa-star"></i></a>
+                    </div>
+                </div>
+                <%
             }      
-        }%></div>
-        
-    </div><%
+        }%>
+            </div>
+
+        </div><%
     }%>
-    <div class="home-button"><a href="home">Home</a></div>
+        <div class="home-button"><a href="home">Home</a></div>
     </div>
 </body>
 

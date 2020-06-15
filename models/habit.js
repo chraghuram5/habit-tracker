@@ -10,6 +10,8 @@ const habitSchema=new mongoose.Schema({
     details:[
         daySchema
     ]
+},{
+    timestamps:true
 });
 
 const Habit=mongoose.model('Habit', habitSchema);

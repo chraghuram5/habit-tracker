@@ -2,28 +2,22 @@
 const Habit=require('../models/habit');
 
 //displays all habits
-module.exports.home=function(req,res){
-    
-    Habit.find({}, function(err, habits){
-        return res.render('habits',{
-            habits: habits
-        })
+module.exports.home= async function(req,res){
+    let currentDate=new Date();
+    try{
+        let habitList= await Habit.find({});
+        res.render('habits',{
+        habits: habitList
     })
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 //create a habit
 module.exports.createHabit=function(req,res){
     let details=[];
-    let currentDate=new Date();
-    for(let i=6;i>=-10;i--){
-        let newDate=new Date();
-        newDate.setDate(currentDate.getDate()-i);
-        let status="None";
-        let detailsObject={};
-        detailsObject.date=newDate;
-        detailsObject.status=status;
-        details.push(detailsObject);
-    }
     let habit={};
     habit.title=req.body.title;
     habit.details=details;
@@ -50,7 +44,6 @@ module.exports.editStatus=function(req,res){
     let habitId=req.query.id;
     let detailId=req.query.did;
     let detailStatus=req.query.status;
-    console.log(habitId);
     Habit.findById(habitId).then(doc=>{
         detail=doc.details.id(detailId);
         detail["status"]=detailStatus;
@@ -66,4 +59,24 @@ module.exports.deleteHabit=function(req,res){
     Habit.findByIdAndDelete(habitId, function(err){
         res.redirect('/home')
     })
+}
+
+//adds new task
+module.exports.addTask=async function(req,res){
+    let id=req.query.id;
+    let detailDate=req.query.date;
+    let detailStatus=req.query.status;
+    let detail={};
+    detail.date=detailDate;
+    detail.status=detailStatus;
+    let habit=await Habit.find({id:id,"details.date":detailDate});
+    if(habit.length==0){
+        Habit.findById(id).then(doc=>{
+            details=doc.details;
+            details.push(detail);
+            doc.save();
+        }).catch(err=>{console.log("error")});
+    }
+
+    return res.redirect('/day-view');
 }

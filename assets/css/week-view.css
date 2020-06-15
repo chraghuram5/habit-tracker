@@ -13,7 +13,7 @@ body{
 
 /*content to the middle*/
 .content{
-    width: 50%;
+    width: 70%;
     height: 100%;
 }
 
@@ -49,10 +49,12 @@ body{
 /*status with color and border*/
 .date{
     width: 15%;
+    height: 4rem;
     display: flex;
     flex-direction: column;
     text-align: center;
     border: 1px solid white;
+    padding: 0.5rem;
 }
 
 /*padding for habit title*/
@@ -61,6 +63,7 @@ body{
     
 }
 
+/*button for goingn home style*/
 .home-button{
     color: white;
     margin: 2rem;
@@ -74,4 +77,32 @@ body{
     padding: 1rem;
     border-radius: 20px;
     border: 1px solid white;
+}
+
+/*removing decoration and adding color for date links*/
+.date a{
+    text-decoration: none;
+    color: white;
+}
+
+.date i{
+    font-size: x-large;
+    color: white;
+}
+
+.date{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*flex for alignmnet inside status details box*/
+.status-date, .status-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.status-date{
+    font-size: medium;
 }
