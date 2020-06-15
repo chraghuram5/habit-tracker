@@ -11,8 +11,9 @@
     <div class="content">
         <div class="days">
             <% let currentDate=new Date();
-    currentDate.setDate(currentDate.getDate());%>
-            <%
+    currentDate.setDate(currentDate.getDate());//add here for changing day
+        %>        
+    <%
     for(let i=6;i>=0;i--){
         let newDate=new Date();
         newDate.setDate(currentDate.getDate()-i);

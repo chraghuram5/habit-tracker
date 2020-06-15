@@ -27,10 +27,10 @@
             <%for(habit of habits){
                 //logic for calculating no.of days since task is created
                 let createdDate=habit.createdAt;
-                createdDate.setDate(createdDate.getDate());
+                createdDate.setDate(createdDate.getDate()-1);
                 const oneDay = 24 * 60 * 60 * 1000;
                 const currentDate = new Date();
-                currentDate.setDate(currentDate.getDate());
+                currentDate.setDate(currentDate.getDate());//add here for changing day
                 const diffDays = Math.round(Math.abs((currentDate - createdDate) / oneDay));
                 let count=0;%>
             <!--each habit-->
@@ -43,7 +43,7 @@
         for(detail of habit.details){
             //logic for getting no.of days till 
             let date=new Date(detail.date);
-            if(date.getTime()>(createdDate.getTime()) && detail.status=="DONE"){
+            if(date.getTime()>=(createdDate.getTime()) && detail.status=="DONE"){
                 count++;
             }
         }
